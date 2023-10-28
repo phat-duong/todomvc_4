@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="./output.css" />
+    <script type="module" src="/src/main.ts" async defer></script>
+    <title>TodoMVC</title>
+  </head>
+  <style>
+    @tailwind base;
+    @tailwind components;
+    @tailwind utilities;
+    .footer {
+      content: '';
+      right: 0;
+      bottom: 0;
+      left: 0;
+      height: 50px;
+      overflow: hidden;
+      box-shadow:
+        0 1px 1px rgba(0, 0, 0, 0.2),
+        0 8px 0 -3px #f6f6f6,
+        0 9px 1px -3px rgba(0, 0, 0, 0.2),
+        0 16px 0 -6px #f6f6f6,
+        0 17px 2px -6px rgba(0, 0, 0, 0.2);
+    }
+    .dark .footer {
+      box-shadow:
+        0 1px 1px rgba(0, 0, 0, 0.2),
+        0 8px 0 -3px rgb(75 85 99),
+        0 9px 1px -3px rgba(0, 0, 0, 0.2),
+        0 16px 0 -6px rgb(75 85 99),
+        0 17px 2px -6px rgba(0, 0, 0, 0.2);
+    }
+  </style>
+  <body class="dark:bg-gray-800">
+    <div class="flex justify-end p-5">
+      <svg
+        class="cursor-pointer dark:text-white"
+        id="change-theme"
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="lucide lucide-moon"
+      >
+        <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
+      </svg>
+    </div>
+    <div class="mt-40 flex h-screen flex-col items-center text-gray-500">
+      <h1 class="text-5xl text-red-500">TODOS</h1>
+      <div class="mt-3 w-1/2 bg-white">
+        <div
+          class="z-30 flex w-full flex-col justify-between rounded-sm bg-white shadow-2xl dark:bg-gray-600 dark:text-white"
+        >
+          <div>
+            <div class="p-4">
+              <div class="relative">
+                <input
+                  id="input"
+                  placeholder="What needs to be done"
+                  class="h-14 w-full pl-10 text-2xl outline-none placeholder:text-2xl placeholder:text-white dark:bg-gray-400"
+                />
+                <svg
+                  class="absolute top-1/2 -translate-y-1/2 text-gray-300"
+                  xmlns="http://www.w3.org/2000/svg"
+                  id="toggle-all"
+                  width="30"
+                  height="30"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="lucide lucide-chevron-down"
+                >
+                  <path d="m6 9 6 6 6-6" />
+                </svg>
+              </div>
+            </div>
+            <ul id="list" class="min-h-[10rem] border-t border-t-gray-300"></ul>
+          </div>
+          <footer class="footer flex justify-between border-t border-t-gray-300 p-4">
+            <div><span id="count">0</span> item left</div>
+            <div class="flex items-center gap-2">
+              <a href="#/" class="inline-block cursor-pointer p-1 hover:border hover:border-red-500"> All </a>
+              <a href="#/active" class="inline-block cursor-pointer p-1 hover:border hover:border-red-500"> Active </a>
+              <a href="#/completed" class="inline-block cursor-pointer p-1 hover:border hover:border-red-500">
+                Completed
+              </a>
+            </div>
+            <div id="clear-completed" class="invisible cursor-pointer hover:underline">Clear completed</div>
+          </footer>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
