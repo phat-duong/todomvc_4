@@ -11,6 +11,7 @@ type Todo = {
   checked: boolean
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
 let todos: Todo[] = sessionStorage.getItem('todos') ? JSON.parse(sessionStorage.getItem('todos')!) : []
 
 const theme = localStorage.getItem('theme')
@@ -91,7 +92,9 @@ clearCompletedEl!.onclick = () => {
 toggleAllEl!.onclick = e => {
   const target = e.target as HTMLLIElement
   if (target.classList.contains('text-black')) {
-    todos.forEach(item => (item.checked = false))
+    todos.forEach(item => {
+      item.checked = false
+    })
   }
 
   sessionStorage.setItem('todos', JSON.stringify(todos))
